@@ -30,13 +30,14 @@ const ProductTable: FC<ProductTableProps> = ({ products, idGroup }) => {
 
   return (
     <div>
-      <table className="flex gap-5 justify-items-center">
+      <table>
         <tbody>
           {products.map((product) => (
             <ProductRow
               key={product.id}
               product={product}
               onProductRemove={removeProductHandler}
+              idGroup={idGroup}
             />
           ))}
         </tbody>
