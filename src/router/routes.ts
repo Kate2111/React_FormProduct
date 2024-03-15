@@ -1,7 +1,7 @@
 import Form from '@/pages/Form';
 
 export const AppRoutes = {
-  form: '/',
+  form: '/React_FormProduct',
 };
 
 interface RouteObject {
