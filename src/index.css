@@ -4,9 +4,8 @@
 
 body {
   box-sizing: border-box;
-  @apply bg-custom-gradient;
   @apply h-screen m-0;
-  padding-top: 8%;
+  padding: 20px;
 }
 
 @media (max-width: 640px) {

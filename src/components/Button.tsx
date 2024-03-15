@@ -1,16 +1,32 @@
-import { FC, ReactNode } from 'react';
+import { FC, ReactNode } from "react";
 
 interface ButtonProps {
   children: ReactNode;
   onClick?: () => void;
+  color?: "SUCCESS" | "ERROR";
+  type?: "button" | "submit" | "reset" | undefined;
 }
 
-const Button: FC<ButtonProps> = ({ children, onClick, ...props }) => {
+const Button: FC<ButtonProps> = ({
+  children,
+  onClick,
+  color,
+  type = "button",
+}) => {
+  const baseStyles =
+    "w-45 h-11 rounded-xl px-4 py-2 flex items-center justify-center mt-3";
+
+  const colorStyles =
+    color === "ERROR"
+      ? "bg-rose-200 text-rose-800 hover:text-rose-500 hover:bg-rose-300"
+      : "bg-transparent text-green-700 border-green-700 border-[1px] hover:bg-green-300 hover:text-green-900";
+
   return (
     <button
-      {...props}
       onClick={onClick}
-      className="bg-transparent min-w-[178px] max-w-[220px] h-11 border-gray-200 border-[1px] rounded-[40px] px-4 py-5 text-black flex items-center justify-center hover:bg-violet-200">
+      className={`${baseStyles} ${colorStyles}`}
+      type={type}
+    >
       {children}
     </button>
   );

@@ -1,8 +1,9 @@
-import { FC } from 'react';
-import ProductRow from './ProductRow';
-import { IProduct } from '@/types/form';
-import { addProduct, removeProduct } from '@/store/slice/productSlice';
-import { useDispatch } from 'react-redux';
+import { FC } from "react";
+import ProductRow from "./ProductRow";
+import { IProduct } from "@/types/form";
+import { addProduct, removeProduct } from "@/store/slice/productSlice";
+import { useDispatch } from "react-redux";
+import Button from "./Button";
 
 interface ProductTableProps {
   products: IProduct[];
@@ -15,7 +16,7 @@ const ProductTable: FC<ProductTableProps> = ({ products, idGroup }) => {
   const addProductHandler = () => {
     const newProduct: IProduct = {
       id: `product-${Date.now()}`,
-      name: '',
+      name: "",
       sum: 0,
       count: 0,
       price: 0,
@@ -29,14 +30,18 @@ const ProductTable: FC<ProductTableProps> = ({ products, idGroup }) => {
 
   return (
     <div>
-      <table>
+      <table className="flex gap-5 justify-items-center">
         <tbody>
           {products.map((product) => (
-            <ProductRow key={product.id} product={product} onProductRemove={removeProductHandler} />
+            <ProductRow
+              key={product.id}
+              product={product}
+              onProductRemove={removeProductHandler}
+            />
           ))}
         </tbody>
       </table>
-      <button onClick={addProductHandler}>Добавить продукт</button>
+      <Button onClick={addProductHandler}>Добавить продукт</Button>
     </div>
   );
 };

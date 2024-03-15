@@ -1,5 +1,6 @@
 // Product.tsx
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
+import Button from "./Button";
 
 interface ProductProps {
   product: {
@@ -9,11 +10,18 @@ interface ProductProps {
     quantity: number;
     sum: number;
   };
-  updateProduct: (id: string, updatedFields: Partial<ProductProps['product']>) => void;
+  updateProduct: (
+    id: string,
+    updatedFields: Partial<ProductProps["product"]>
+  ) => void;
   removeProduct: (id: string) => void;
 }
 
-const Product: React.FC<ProductProps> = ({ product, updateProduct, removeProduct }) => {
+const Product: React.FC<ProductProps> = ({
+  product,
+  updateProduct,
+  removeProduct,
+}) => {
   const [title, setTitle] = useState(product.title);
   const [price, setPrice] = useState(product.price);
   const [quantity, setQuantity] = useState(product.quantity);
@@ -55,7 +63,9 @@ const Product: React.FC<ProductProps> = ({ product, updateProduct, removeProduct
       </td>
       <td>{(price * quantity).toFixed(2)}</td>
       <td>
-        <button onClick={() => removeProduct(product.id)}>Удалить</button>
+        <Button onClick={() => removeProduct(product.id)} color="ERROR">
+          Удалить
+        </Button>
       </td>
     </tr>
   );

@@ -1,13 +1,17 @@
-import React from 'react';
-import Input from './Input';
-import { IProduct } from '@/types/form';
+import React from "react";
+import Input from "./Input";
+import { IProduct } from "@/types/form";
+import Button from "./Button";
 
 interface ProductRowProps {
   product: IProduct;
   onProductRemove: (id: string | number) => void;
 }
 
-const ProductRow: React.FC<ProductRowProps> = ({ product, onProductRemove }) => {
+const ProductRow: React.FC<ProductRowProps> = ({
+  product,
+  onProductRemove,
+}) => {
   const { id, name, sum, count, price } = product;
 
   return (
@@ -17,7 +21,7 @@ const ProductRow: React.FC<ProductRowProps> = ({ product, onProductRemove }) => 
           type="text"
           value={name}
           onChange={(newValue) => console.log(newValue)}
-          title={'Название продукта'}
+          title={"Название продукта"}
           placeholder="Название продукта"
         />
       </td>
@@ -26,7 +30,7 @@ const ProductRow: React.FC<ProductRowProps> = ({ product, onProductRemove }) => 
           type="number"
           value={price}
           onChange={(newValue) => console.log(newValue)}
-          title={'Цена'}
+          title={"Цена"}
           placeholder="Цена продукта"
           min="0"
           step="0.01"
@@ -37,7 +41,7 @@ const ProductRow: React.FC<ProductRowProps> = ({ product, onProductRemove }) => 
           type="number"
           value={count}
           onChange={(newValue) => console.log(newValue)}
-          title={'Кол-во'}
+          title={"Кол-во"}
           placeholder="Количество продукта"
         />
       </td>
@@ -45,12 +49,14 @@ const ProductRow: React.FC<ProductRowProps> = ({ product, onProductRemove }) => 
         <Input
           type="number"
           value={sum}
-          title={'Сумма'}
+          title={"Сумма"}
           onChange={(newValue) => console.log(newValue)}
         />
       </td>
       <td>
-        <button onClick={() => onProductRemove(id)}>Удалить</button>
+        <Button onClick={() => onProductRemove(id)} color="ERROR">
+          Удалить
+        </Button>
       </td>
     </tr>
   );
